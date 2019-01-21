@@ -1,0 +1,58 @@
+-------------------------------------------------
+CHAPTERS 1-2 - JAVA
+-------------------------------------------------
+
+- von Neumann architecture = programs and data can be represented in a similar way
+                               in the same internal memory
+
+
+
+- Generations of Early Computing
+
+    First Generation = vacuum tubes (Ananasoff-Barry, 1939)
+    Second Generation = transistors (invented in 1947, first computer is IBM 7070, 1958)
+    Third Generation = integrated circuits (chips) photographically imprinted onto silicon wafers
+                          (invented in 1959, first computer is IBM 360, 1964)
+    Fourth Generation = microprocessors (invented in 1975)
+
+
+
+- Java Compilation
+
+    Classic compilation =
+      1. Compile source file into object file
+      2. Link object file with other object files to create executable
+
+        source_file -> compiler -> object_file -> linker -> executable_file
+                                   object_file ->
+
+
+    Java compilation = JVM runs intermediate byte code, but the JVM's jitter will often compile
+                         chunks of code before running them
+
+                     = intermediate code is stored in 'class files' and linked class files are 
+                         grouped together into a 'JAR archive'
+
+        source_file -> java_compiler -> class_file -> linker -> JAR archive -> JVM
+                                        class_file
+
+
+
+- History of OOP
+
+    - SIMULA (Scandanavians Dahl, Myhrhaug, and Nygaard, early 1960s)
+    - Smalltalk (Xerox PARC, late 1970s)
+    - C (Dennis Ritchie, Bell Labs, 1970)
+    - C++ (Bjarne Stroustrup, Bell Labs, early 1980s)
+    - Java (James Gosling, Sun Microsystems, 1991)
+
+
+
+- History of the web
+
+    - Hypertext is described by Ted Nelson (1965)
+    - ARPANET (1969)
+    - WWW is described by Tim Berners-Lee (CERN, 1989)
+    - First browser is created (CERN, 1991)
+    - Mosaic browser is released (National Center for Supercomputing Applications, 1993)
+    - 500 web servers in 1993, 35 million web servers in 2003
