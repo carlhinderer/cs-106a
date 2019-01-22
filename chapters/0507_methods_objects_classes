@@ -1,0 +1,48 @@
+-------------------------------------------------
+CHAPTERS 5-7 - METHODS, OBJECTS, AND CLASSES
+-------------------------------------------------
+
+- Method example
+
+    private double celsiusToFarenheit(double c) {
+        return 9.0 / 5.0 * c + 32;
+    }
+
+
+    visibility type name (parameters)
+
+    visibility = usually 'public' or 'private'
+    type = return value type, or 'void' if none
+
+
+
+
+- Example - Euclidean algorithm
+
+    public int gcd(int x, int y) {
+        int r = x % y;
+        while (r != 0) {
+            x = y;
+            y = r;
+            r = x % y;
+        }
+        return y;
+    }
+
+
+
+- Class Definition
+
+    /* File: name.java */
+
+    visibility class name extends super {
+        ... class body ...
+    }
+
+
+    - Extends 'Object' if 'extends' clause is omitted
+
+    - visibility = public | private | protected
+          public = visible to every class in the program
+          private = visible only within the class that defines it
+          protected = visible only to subclasses and classes in the same package
