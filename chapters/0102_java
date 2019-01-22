@@ -56,3 +56,33 @@ CHAPTERS 1-2 - JAVA
     - First browser is created (CERN, 1991)
     - Mosaic browser is released (National Center for Supercomputing Applications, 1993)
     - 500 web servers in 1993, 35 million web servers in 2003
+
+
+
+- First Program
+
+    /*
+     * File: Add2Integers.java
+     */
+
+    import acm.program.*;
+
+    public class Add2Integers extends ConsoleProgram {
+        public void run() {
+            println("This program adds 2 integers.");
+            int n1 = readInt("Enter n1: ");
+            int n2 = readInt("Enter n2: ");
+            int total = n1 + n2;
+            println("The total is " + total + ".");
+        }
+    }
+
+
+
+- Principles of OOP
+
+    - Object contains both state and behavior
+
+    - Calling a method is passing a message to a receiver object
+    
+        receiver.name(arguments)
