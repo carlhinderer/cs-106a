@@ -49,3 +49,54 @@ CHAPTERS 3-4 - EXPRESSIONS & STATEMENTS
     !(p || q)     IS EQUIVALENT TO      !p && !q
 
     !(p && q)     IS EQUIVALENT TO      !p || !q
+
+
+
+- Statement Forms
+
+    // For loop
+    for (int i=0; i<N; i++) {
+        ...
+    }
+
+
+    // While loop
+    while (true) {
+        ...
+        if (value == SENTINEL) break;
+        ...
+    }
+
+
+    // If/else statement
+    if (n > 0) {
+        println("Number is positive");
+    } else if (n == 0) {
+        println("Number is zero");
+    } else {
+        println("Number is negative");
+    }
+
+
+    // Ternary ?:
+    max = (x > y) ? x : y
+
+
+    // Switch statement
+    switch(n) {
+        case 1:
+            println("Ace");
+            break;
+        case 11: 
+            println("Jack");
+            break;
+        case 12:
+            println("Queen");
+            break;
+        case 13:
+            println("King");
+            break;
+        default:
+            println(n);
+            break;
+    }
