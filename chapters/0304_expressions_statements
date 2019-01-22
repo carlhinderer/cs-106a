@@ -1,0 +1,51 @@
+-------------------------------------------------
+CHAPTERS 3-4 - EXPRESSIONS & STATEMENTS
+-------------------------------------------------
+
+- Java Primitive Types
+
+    byte        8-bit integers
+    short       16-bit integers
+    int         32-bit integers
+    long        64-bit integers
+
+    float       32-bit floating point
+    double      64-bit floating point
+
+    char        16-bit Unicode-encoded character
+    boolean     true or false
+
+
+    Arithmetic operators: + - * / %
+    Relational operators: == != < > <= >=
+    Logical operators: && || !
+    Shorthand operators: += -= *= /= %= ++ --
+
+
+
+- Numerical Features
+
+    // Named constants
+    private static final double PI = 3.141592653589
+
+
+    // Integer division
+    >>> 9 / 4
+    2
+
+    >>> 9 % 4
+    1
+
+
+    // Truncation with explicit type casting
+    >>> int n = (int) 1.9999;
+    >>> n
+    1
+
+
+
+- DeMorgan's Laws
+
+    !(p || q)     IS EQUIVALENT TO      !p && !q
+
+    !(p && q)     IS EQUIVALENT TO      !p || !q
