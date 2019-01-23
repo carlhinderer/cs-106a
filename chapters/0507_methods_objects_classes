@@ -138,3 +138,63 @@ CHAPTERS 5-7 - METHODS, OBJECTS, AND CLASSES
    Constructors in Java classes implicitly call 'super()' before executing, to ensure that
      superclass constructors get called.  If the first line of your constructor contains a
      call to 'super()' or 'this', the superclass constructor will not be called.
+
+
+
+- Allocation of Memory in Java
+
+    1. Static variables and constants = allocated at the beginning of memory space alongside
+         program instructions
+
+    2. Dynamically allocated objects created with 'new' = on the heap, usually located just
+         after the area with static declarations
+
+    3. Local variables = on the stack
+
+
+    Note that when you create a new object, you allocate memory on both the stack and the 
+      heap.  A variable is created on the stack, which holds the memory address of the
+      object's location in the heap.
+
+
+
+- Garbage collection in Java
+
+    Java uses 'mark-and-sweep' garbage collection.
+
+    1. Mark = Go through every variable reference on the stack and every variable reference
+              in static storage, and mark their corresonding object as being 'in use' by
+              setting a flag in the object's overhead space.
+
+              Also, for every object you mark 'in use', find all the references to other
+              objects it contains, and mark those objects 'in use' as well.
+
+    2. Sweep = Go through every object on the heap and delete the ones not marked 'in use'.
+
+
+
+- Wrapper Classes
+
+    Java collection objects like 'ArrayList' let you use any type of object in the collection,
+      and they gain this flexibility by having each object in the collection inherit from
+      'Object'.  Unfortunately, this means they cannot hold primitive types.
+
+    To get around this problem, there is a class version of each primitive type.
+
+
+      Primitive Type        Wrapper Class
+      ----------------------------------------------
+      byte                  Byte
+      short                 Short
+      int                   Integer
+      long                  Long
+      float                 Float
+      double                Double
+      boolean               Boolean
+      char                  Character
+
+
+      >>> int n = 5;
+      >>> Integer nAsInteger = new Integer(n);
+      >>> nAsInteger.intValue()
+      5
