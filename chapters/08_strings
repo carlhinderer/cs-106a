@@ -1,0 +1,84 @@
+-------------------------------------------------
+CHAPTER 8 - STRINGS
+-------------------------------------------------
+
+- Enumerated Types
+
+    - 'Enumeration' is the process of listing all the elements in the domain of a type.
+    - An 'enumerated type' is defined by listing all the domain's elements.
+
+
+    // In the early days of Java, programmers implemented the enumerations by
+    //   assigning integers.
+    public static final int SINGLE = 1;
+    public static final int MARRIED_JOINT = 2;
+    public static final int MARRIED_SEPARATE = 3;
+    public static final int HEAD_OF_HOUSEHOLD = 4;
+    public static final int WIDOW_OR_WIDOWER = 5;
+
+    if(filingStatus == SINGLE) ...
+
+
+    // In Java 5+, the enum type can be used.
+    public enum Direction {
+        NORTH, EAST, SOUTH, WEST
+    }
+    
+    direction dir = Direction.NORTH;
+
+    
+
+- Character constants
+
+    char myChar = 'A';
+
+
+    // In Java, characters are mapped to integers (their Unicode codes).
+    //   0-9 are consecutive
+    //   A-Z are consecutive
+    //   a-z are consecutive
+
+    private char randomLetter() {
+        return (char) rgen.nextInt('A', 'Z');
+    }
+
+    >>> 'A' + 5
+    'F'
+
+
+
+- Useful character methods
+
+    static boolean isDigit(char ch)
+    static boolean isLetter(char ch)
+    static boolean isLetterOrDigit(char ch)
+    static boolean isLowerCase(char ch)
+    static boolean isUpperCase(char ch)
+    static boolean isWhitespace(char ch)
+    static char toLowerCase(char ch)
+    static char toUpperCase(char ch)
+
+
+    // Implementation Example
+    public static char toLowerCase(char ch) {
+        if (ch >= 'A' && ch <= 'Z') {
+            return ch + 'a' - 'A';
+        } else {
+            return ch;
+        }
+    }
+
+
+
+- Example - Control Statements Involving Characters
+
+    Because 'char' is a scalar type, it can appear anywhere integers can.
+
+    private boolean isEnglishVowel(char ch) {
+        switch(Character.toLowerCase(ch)) {
+            case 'a': case 'e': case 'i': case 'o': case 'u':
+                return true;
+            default:
+                return false;
+        }
+    }
