@@ -1,0 +1,68 @@
+-------------------------------------------------
+CHAPTERS 9-10 - GRAPHICS AND EVENTS
+-------------------------------------------------
+
+- Using the acm.graphics Package
+
+    - The origin is the top left of the screen.
+    - A collage model is used to stack the objects.
+    - The 'GCanvas' is the container class that holds all the objects.
+    
+
+    // Methods to add and remove objects
+    void add(GObject gobj)
+    void add(GOjbect gobj, double x, double y)
+    void remove(GObject gobj)
+    void removeAll()
+
+    // Method to find the graphical object at a particular location
+    GObject getElementAt(double x, double y)
+
+    // Methods to support animation
+    void pause(double milliseconds)
+    void waitForClick()
+
+    // Useful methods inherited from superclasses
+    int getWidth()
+    int getHeight()
+    void setBackground(Color bg)
+
+
+
+- The 'GObject' Class    
+
+    GObject' is the abstract class that all other classes inherit from.  Abstract classes 
+      cannot be directly instantiated.  They are meant to be a template for other classes
+      to inherit.
+
+
+      // Not legal
+      GObject gobj = new GObject();
+
+      // Legal
+      GObject gobj = new GLabel("Hello, world");
+
+
+
+- Methods supported by all 'GObject' subclasses
+
+    void setLocation(double x, double y)
+    void move(double dx, double dy)
+    void movePolar(double r, double theta)
+
+    double getX()
+    double getY()
+    double getWidth()
+    double getHeight()
+    boolean contains(double x, double y)
+
+    void setColor(Color c)
+    Color getColor()
+
+    void setVisible(boolean visible)
+    boolean isVisible()
+
+    void sendToFront()
+    void sendToBack()
+    void sendForward()
+    void sendBackward()
