@@ -66,3 +66,73 @@ CHAPTERS 9-10 - GRAPHICS AND EVENTS
     void sendToBack()
     void sendForward()
     void sendBackward()
+
+
+
+- The Java Event Model
+
+    - Found in the 'java.awt.event' library.
+    - Events themselves do not perfrom actions.  Listeners respond to the events.
+
+
+
+- Example - Handling Mouse Events
+
+    import acm.graphics.*;
+    import acm.program.*;
+    import java.awt.*;
+    import java.awt.event.*;
+
+    public class DrawStarMap extends GraphicsProgram {
+        public void init() {
+            addMouseListeners();
+        }
+
+        public void mouseClicked(MouseEvent e) {
+            GStar star = new GStar(STAR_SIZE);
+            star.setFilled(true);
+            add(star, e.getX(), e.getY());
+        }
+
+        private static final double STAR_SIZE = 20;
+    }
+
+
+
+- Example - Handling Keyboard Events
+
+    public void init() {
+        addKeyListeners();
+    }
+
+    public void keyPressed(KeyEvent e) {
+        if (gobj != null) {
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_UP:     gobj.move(0, -1);
+                case KeyEvent.VK_DOWN:   gobj.move(0, 1);
+                case KeyEvent.VK_LEFT:   gobj.move(-1, 0);
+                case KeyEvent.VK_RIGHT:  gobj.move(1, 0);
+            }
+        }
+    }
+
+
+
+- Example - Add Button to ConsoleProgram
+
+    import acm.program.*;
+    import java.awt.event.*;
+    import javax.swing;
+
+    public class HitchhikerButton extends ConsoleProgram {
+        public void init() {
+            add(new JButton("Red"), SOUTH);
+            addActionListeners();
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            if (e.getActionCommand().equals("Red")) {
+                println("Please do not press this button again.");
+            }
+        }
+    }
