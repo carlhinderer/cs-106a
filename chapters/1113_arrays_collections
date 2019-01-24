@@ -129,3 +129,80 @@ CHAPTERS 11-13 - ARRAYS & COLLECTIONS
     >>> stringList.add("Hello world");
     >>> stringList.get(0)
     "Hello world"
+
+
+
+- Searching
+
+    private int linearSearch(int key, int[] array) {
+        for (int i=0; i < array.length; i++) {
+            if (key == array[i]) return i;
+        }
+        return -1;
+    }
+
+
+    private int binarySearch(String key, String[] array) {
+        int lh = 0;
+        int rh = array.length - 1;
+
+        while (lh <= rh) {
+            int mid = (lh + rh) / 2;
+            int cmp = key.compareTo(array[mid]);
+            if (cmp == 0) return mid;
+            if (cmp < 0) {
+                rh = mid - 1;
+            } else {
+                lh = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+
+
+- Selection Sort
+
+    private void sort(int[] array) {
+        for (int lh=0; lh < array.length; lh++) {
+            int rh = findSmallest(array, lh, array.length);
+            swapElements(array, lh, rh);
+        }
+    }
+
+    private int findSmallest(int[] array, int p1, int p2) {
+        int smallestIndex = p1;
+        for (int i = p1+1; i <p2; i++) {
+            if (array[i] < array[smallestIndex]) smallestIndex = i;
+        }
+        return smallestIndex;
+    }
+
+    private void swapElements(int[] array, int p1, int p2) {
+        int temp = array[p1];
+        array[p1] = array[p2];
+        array[p2] = temp;
+    }
+
+
+
+- Radix Sort
+
+    Sort items by putting them into a predefined number of buckets.  For instance, if you 
+      sort a list of integers, the running time is O(# of buckets * # of digits).
+
+
+
+- Example - File Reader
+
+    private BufferedReader openFileReader(String prompt) {
+        BufferedReader rd = null;
+        while (rd == null) {
+            try {
+                String name = readLine(prompt);
+                rd = new BufferedReader(new FileReader(name));
+            } catch (IOException ex) {
+                println("Can't open that file.");
+            }
+        }
+    }
