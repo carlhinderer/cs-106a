@@ -1,0 +1,131 @@
+-------------------------------------------------
+CHAPTERS 11-13 - ARRAYS & COLLECTIONS
+-------------------------------------------------
+
+- Java arrays
+
+    Java arrays are ordered and homogenous.
+
+    >>> int[] intArray = new int[10];
+
+    >>> Student[] topStudents = new Student[5];
+    >>> topStudents[0] = new Student("Hermione Granger", 314159);
+
+
+
+- Memory Layout of array of doubles
+
+    >>> double[] scores = new double[5];
+
+
+                   object       1000
+                   overhead     1004
+        ----------------------
+        length        5         1008
+        ----------------------
+        scores[0]     0.0       100C
+                                1010
+        ----------------------
+        scores[1]     0.0       1014
+                                1018
+        ----------------------
+        scores[2]     0.0       101C
+                                1020
+        ----------------------
+        scores[3]     0.0       1024
+                                1028              scores     1000       FFB8
+        ----------------------                    --------------------
+        scores[4]     0.0       102C                                    FFBC
+                                1030                                    FFC0
+        ----------------------                    --------------------
+
+
+               HEAP                                       STACK
+
+
+
+- Other array operations
+
+    // Passing arrays as parameters
+
+    private void printArray(int[] array) {
+        for (int i=0; i < array.length; i++) {
+            println(array[i]);
+        }
+    }
+
+
+    // Swapping Elements
+
+    private void swapElements(int[] array, int p1, int p2) {
+        int temp = array[p1];
+        array[p1] = array[p2];
+        array[p2] = temp;
+    }
+
+
+    // Array Initialization
+
+    >>> int[] digits = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+
+    // Multidimensional Arrays
+
+    >>> char[][] board = new char[3][3];
+
+    >>> double identityMatrix[3][3] = {
+          {1.0, 0.0, 0.0},
+          {0.0, 1.0, 0.0},
+          {0.0, 0.0, 1.0}
+        }
+
+
+
+- Bit Manipulation
+
+    >>> int x = 0xACCEDED;
+    >>> int y = 0xDEFACED;
+
+    x & y      BITWISE AND
+    x | y      BITWISE OR
+    x ^ y      BITWISE XOR
+    ~x         NEGATION
+    x << 1     LSHIFT
+    x >> 1     RSHIFT
+
+
+
+- Example - Using Bit Masks For Color Components
+
+    public static int getAlpha(int pixel) {
+        return (pixel >> 24) & 0xFF;
+    }
+
+    public static int getRed(int pixel) {
+        return (pixel >> 16) & 0xFF;
+    }
+
+    public static int getGreen(int pixel) {
+        return (pixel >> 8) * 0xFF;
+    }
+
+    public static int getBlue(int pixel) {
+        return pixel & 0xFF;
+    }
+
+
+    public static int createRgbPixel(int alpha, int r, int g, int b) {
+        return (alpha << 24) | (r << 16) | (g << 8) | b;
+    }
+
+
+
+- The ArrayList class
+
+    Unlike arrays, arraylists are dynamically resizable, and elements can be inserted or
+      removed anywhere in the list.
+
+    >>> ArrayList<String> stringList = new ArrayList<String>();
+    >>> stringList.add("Hello world");
+    >>> stringList.get(0)
+    "Hello world"
