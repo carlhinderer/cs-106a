@@ -206,3 +206,140 @@ CHAPTERS 11-13 - ARRAYS & COLLECTIONS
             }
         }
     }
+
+
+
+- HashMap
+
+    >>> Map<String, String> stateMap = new HashMap<String, String>();
+    >>> stateMap.put("AK", "Alaska");
+    >>> stateMap.get("AK")
+    "Alaska"
+
+
+    - Each key is transformed into an integer, called a 'Hash Code'.
+
+    - 'HashMap' can adjust its internal representation dynamically if it's buckets start
+        to get too full.  It will increase the number of buckets, then will have to re-add
+        all of the keys into the new buckets.  This process is called 'rehashing'.
+
+    - Because Java's 'hashCode()' method takes in a key and returns a 32-bit int,
+        collisions are possible.  This is due to the 'pigeonhole principle', which states
+        that if you map a larger set onto a smaller one, there will be duplicates.
+
+
+
+- Writing hashCode() Methods
+
+    Rules:
+      1. The hashCode() method must always return the same code if called on the same object.
+
+      2. The implementation of hashCode() must be consistent with the implementation of the 
+           'equals()' method, because the hashing mechanism uses 'equals()' internally to 
+           compare keys.  So, any two objects considered equal by the 'equals()' method must
+           have the same hash code.
+
+      3. The hashCode() method should avoid returning hash codes that lead to collisions, as
+           they will dramatically reduce performance.
+
+      4. The hashCode() method should be simple and quick to compute.
+
+
+    // Example - hashCode() for Strings
+    public class String {
+        public int hashCode() {
+            int hash = 0;
+            for (i=0; i < length(); i++) {
+                hash = 37 * hash + charAt(i);
+            }
+            return hash;
+        }
+    }
+
+
+
+- Example - Simple String Map Implementation
+
+    /* Simplified map for strings */
+    public class SimpleStringMap {
+        public SimpleStringMap() {
+            bucketArray = new HashEntry[N_BUCKETS];
+        }
+
+        public void put(String key, String value) {
+            int bucket = Math.abs(key.hashCode()) % N_BUCKETS;
+            HashEntry entry = findEntry(bucketArray[bucket], key);
+            if (entry == null) {
+                entry = new HashEntry(key, value);
+                entry.setLink(bucketArray[bucket]);
+                bucketArray[bucket] = entry;
+            } else {
+                entry.setValue(value);
+            }
+        }
+
+        public String get(String key) {
+            int bucket = Math.abs(key.hashCode()) % N_BUCKETS;
+            HashEntry entry = findEntry(bucketArray[bucket], key);
+            if (entry == null) {
+                return null;
+            } else {
+                return entry.getValue();
+            }
+        }
+
+        private HashEntry findEntry(HashEntry entry, String key) {
+            while (entry != null) {
+                if (entry.getKey().equals(key)) return entry;
+                entry = entry.getLink();
+            }
+            return null;
+        }
+
+        private static final int N_BUCKETS = 7;
+        private HashEntry[] bucketArray;        
+    }
+
+
+    /* Package-private class */
+    class HashEntry {
+        public HashEntry(String key, String value) {
+            entryKey = key;
+            entryValue = value;
+        }
+
+        public String getKey() {
+            return entryKey;
+        }
+
+        public String getValue() {
+            return entryValue;
+        }
+
+        public void setValue(String value) {
+            entryValue = value;
+        }
+
+        public HashEntry getLink() {
+            return entryLink;
+        }
+
+        public void setLink(HashEntry nextEntry) {
+            entryLink = nextEntry;
+        }
+
+        private String entryKey;
+        private String entryValue;
+        private HashEntry entryLink;
+    }
+
+
+
+- Runnable Objects
+
+    Objects that implement the 'Runnable' interface are called 'runnable objects'.
+
+    public class AnimatedSquare extends GRect implements Runnable {
+        public void run() {}
+        ...
+    }
