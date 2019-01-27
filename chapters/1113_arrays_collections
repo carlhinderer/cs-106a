@@ -106,7 +106,7 @@ CHAPTERS 11-13 - ARRAYS & COLLECTIONS
     }
 
     public static int getGreen(int pixel) {
-        return (pixel >> 8) * 0xFF;
+        return (pixel >> 8) & 0xFF;
     }
 
     public static int getBlue(int pixel) {
